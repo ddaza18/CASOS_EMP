@@ -27,5 +27,8 @@ public interface CasosRepository extends JpaRepository<Casos, Long> {
 	}
 	
     List<Casos> findByDescripcionContainingIgnoreCase(String filtro);
+    
+   @Transactional
+   public void deleteById(Long id_caso); 
 
 }

@@ -12,9 +12,11 @@ import javax.swing.JWindow;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -114,6 +116,22 @@ public class UsersAllController {
 		redirectAttributes.addAttribute("id_caso", casos.getId_caso());
 		return "redirect:/HomeCasoUser";
 
+	}
+	
+	/*
+	 * Metodo de eliminar Casos
+	 */
+	
+	@DeleteMapping("/Casos/{id_caso}")
+	public ResponseEntity<?> eliminarCasos(@PathVariable Long id_caso){
+		Optional<Casos> casos = casosRepository.findById(id_caso);
+		if(!casos.isPresent()) {
+			logger.error("Caso no encontrado en la BD.");
+			return ResponseEntity.notFound().build();
+		}
+		casosRepository.deleteById(id_caso);
+		return ResponseEntity.ok().build();
+		
 	}
 	
 	/*
