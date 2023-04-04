@@ -4,7 +4,7 @@ Proyecto De Registro y Modificación de Casos - Login Único "Usuario" - Spring 
 - Lenguaje JAVA
 - Proyecto realizado con Spring boot, JPA, Thymeleaf
 - Patron arquitectonico MVC
-- ESTADO -> EN PROCESO
+- Estado -> EN PROCESO
 - Seguridad integrada con Spring Secuity - Encriptacion de Contraseña en BD
 - Filtro de busqueda mediante la "Descripcion" de caso
 - Creacion y modificacion del Caso
