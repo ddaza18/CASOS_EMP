@@ -20,3 +20,6 @@ PROXIMAS FUNCIONALIDADES:
 - Eliminacion directa de Casos -> EN DESARROLLO
 - Inicio de sesion en Modo Admin -> EN DESARROLLO
 - Deslogueo automatico de usuarios mediane tiempo de espera en linea -> EN DESARROLLO
+
+#FUTURAS INTEGRACIONES
+- Docker
