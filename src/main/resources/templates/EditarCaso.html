@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<title>Editar Caso</title>
+<link href="/css/StyleLogin.css" rel="stylesheet">
+</head>
+<body>
+	<form th:action="@{/ActualizarCasos/{id_caso}(id_caso=${casos.id_caso})}" method="POST" th:object="${casos}">
+		<div class="login-box">
+			<h2>ACTUALIZAR INCIDENCIA (EMP)</h2>
+
+			<div class="user-box">
+				<input type="text" name="descripcion"
+					th:field="*{descripcion}" required autofocus="autofocus"
+					placeholder="Descripcion Incidencia (EMP)" th:value="${casos.descripcion}">
+			</div>
+			<div class="user-box">
+				<input type="text" th:field="*{telefono}" required
+					placeholder="Telefono (EMP)" th:value="${casos.telefono}">
+			</div>
+			<div class="user-box">
+				<input type="hidden" th:field="*{id_caso}" th:value="${casos.id_caso}" />
+			</div>
+			<div class="user-box">
+				<input type="hidden" th:field="*{fecha_creacion}" th:value="${casos.fecha_creacion}" readonly>
+			</div>
+			<div class="user-box">
+				<input type="hidden" th:field="*{estado_caso}" th:value="${casos.estado_caso}" />
+			</div>
+
+		</div>
+		<div class="btn" style="position: relative; left: 48%; top: 430px; ">
+			        <button type="submit" name="_method" value="PUT">Guardar</button>
+		</div>
+		<a
+			style="display: inline-block; padding: 10px 20px; background-color: #999BB8; border-radius: 3px; text-decoration: none; color: #fff; font-weight: bold; color: #000000; position: fixed; top: 3px; left: 3px;" th:href="@{/HomeCasoUser}">VOLVER</a>
+	</form>
+</body>
+</html>

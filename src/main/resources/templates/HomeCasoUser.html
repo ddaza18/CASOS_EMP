@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<head>
+<meta charset="utf-8">
+<title>Bienvenido</title>
+<link href="/css/StyleHomeCrearCaso.css" rel="stylesheet">
+<!--<link th:href="#" rel="stylesheet">-->
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+</head>
+<body>
+<body>
+	<div class="area"></div>
+	<nav class="main-menu">
+		<ul>
+			<li>
+				<h6 style="color: white; position: relative; left: 25px;">PANEL
+					DE ACCIONES (EMP)</h6> <a th:href="@{/CrearCasos}"> <i
+					class="fa fa-book fa-2x"></i> <span class="nav-text"> Crear
+						Caso </span>
+			</a>
+			</li>
+			<li><a th:href="@{/HomeCasoUser}"> <i
+					class="fa fa-home fa-2x"></i> <span class="nav-text"> Mis
+						Casos </span>
+			</a></li>
+			<li><a href="#"> <i class="fa fa-cogs fa-2x"></i> <span
+					class="nav-text"> Configuración Del Sistema </span>
+			</a></li>
+			<li><a href="#"> <i class="fa fa-info fa-2x"></i> <span
+					class="nav-text"> Información Adicional </span>
+			</a></li>
+		</ul>
+
+		<ul class="logout">
+			<li><a th:href="@{/logout}" sec:authorize="isAuthenticated()">
+					<i class="fa fa-power-off fa-2x"></i> <span class="nav-text">
+						Cerrar Sesion </span>
+			</a></li>
+		</ul>
+	</nav>
+	<h4
+		style="position: relative; left: 38%; width: 30%; text-align: center;">
+		BIENVENIDO USUARIO
+		<br> <span sec:authentication="principal.username"></span>
+	</h4>
+	<!-- FILTRO DE CASOS POR DESCRIPCIÓN -->
+	<form th:action="@{/filtrar}" method="GET" style="position: relative; left: 80%; width: 13%">
+   		<input type="text" name="filtro" placeholder="Filtro por Descripción...">
+    <button style="background-color: #A0AFF6; border-radius: 5px;" type="submit">Filtrar</button>
+	</form>
+	<br>
+	<!-- TABLA DE CASOS -->
+	<table class="table">
+		<thead>
+			<tr style="background-color: #bdb8b8;">
+				<th scope="col"><strong><center>DESCRIPCIÓN</center></strong></th>
+				<th scope="col"><strong><center>USUARIO(EMP)</center></strong></th>
+				<th scope="col"><strong><center>TELEFONO</center></strong></th>
+				<th scope="col"><strong><center>FECHA DE CREACIÓN</center></strong></th>
+				<th scope="col"><strong><center>ESTADO ACTUAL</center></strong></th>
+				<th scope="col"><strong><center>ACCIONES</center></strong></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="caso : ${casos}">
+				<td style="text-align: center;" th:text="${caso.descripcion}"></td>
+				<td style="text-align: center;" th:text="${caso.usuario.email}"></td>
+				<td style="text-align: center;" th:text="${caso.Telefono}"></td>
+				<td style="text-align: center;" th:text="${caso.fecha_creacion}"></td>
+				<td style="text-align: center;" th:text="${caso.estado_caso}"></td>
+				<td><center><a th:href="@{/ModificarCasos/{id_caso}(id_caso=${caso.id_caso})}">
+						<button style="background-color: #A0AFF6; border-radius: 5px; text-align: center; border-style: 1px;" type="button" class="btn btn-primary">MODIFICAR CASO</button>
+				</a></center></td>
+			</tr>
+		</tbody>
+</body>
+</html>
+
