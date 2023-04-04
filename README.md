@@ -21,5 +21,5 @@ PROXIMAS FUNCIONALIDADES:
 - Inicio de sesion en Modo Admin -> EN DESARROLLO
 - Deslogueo automatico de usuarios mediane tiempo de espera en linea -> EN DESARROLLO
 
-#FUTURAS INTEGRACIONES
+# FUTURAS INTEGRACIONES
 - Docker
