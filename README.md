@@ -12,7 +12,7 @@ Proyecto De Registro y Modificación de Casos - Login Único "Usuario" - Spring 
 - Borrado de Cache al Cerrar Sesion
 
 
-PROXIMAS FUNCIONALIDADES:
+# PROXIMAS FUNCIONALIDADES:
 - Chat En linea - Panel de Chat con Integrantes de misma Linea -> EN DESARROLLO
 - Configuracion grafica del sistema (MODO DARK Y CLARO) -> EN DESARROLLO
 - Panel de Comentarios - Ususarios -> EN DESARROLLO
@@ -22,4 +22,4 @@ PROXIMAS FUNCIONALIDADES:
 - Deslogueo automatico de usuarios mediane tiempo de espera en linea -> EN DESARROLLO
 
 # FUTURAS INTEGRACIONES
-- Docker
+- Entorno Docker
