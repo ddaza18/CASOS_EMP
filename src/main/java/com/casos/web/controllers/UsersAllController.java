@@ -44,6 +44,13 @@ public class UsersAllController {
 	
 	@Autowired
 	private CasosService casosService;
+
+	
+	@GetMapping("/Error404")
+	public String paginaNoEncontrada() {
+		logger.error("Error 404 Pagina No Encontrada");
+		return "NotFound";
+	}
 	
 	@GetMapping("/loginUsuarios")
 	public String peticionIndex() {
@@ -66,22 +73,6 @@ public class UsersAllController {
 		logger.info("Se ingreso al apartado de CrearCasos");
 		return "CrearCasos";
 	}
-	/*
-	 * Get del ModificarCasos HTML
-	 */
-	
-	@GetMapping("/ModificarCasos/{id_caso}")
-	public String actualizarCasos(Model model, @PathVariable("id_caso") Long id_caso) {
-	    Optional<Casos> casosOpt = casosRepository.findById(id_caso);
-	    if(casosOpt.isPresent()) {
-	        logger.error("Caso Encontrado en BD.");
-	        model.addAttribute("casos", casosOpt.get());
-	        return "EditarCaso";
-	    } else {
-	    	logger.error("No se encontraron casos Relacionados 404 Not Found");
-	        return "redirect:/HomeCasoUser";
-	    }
-	}
 	
 	@PostMapping("/CrearCasos")
 	public String casosCreadosPost(@ModelAttribute("casos") Casos casos, Model model, Authentication authentication) {
@@ -98,6 +89,23 @@ public class UsersAllController {
 	}
 	
 	/*
+	 * Get del ModificarCasos HTML
+	 */
+	
+	@GetMapping("/ModificarCasos/{id_caso}")
+	public String actualizarCasos(Model model, @PathVariable("id_caso") Long id_caso) {
+	    Optional<Casos> casosOpt = casosRepository.findById(id_caso);
+	    if(casosOpt.isPresent()) {
+	        logger.error("Caso Encontrado en BD.");
+	        model.addAttribute("casos", casosOpt.get());
+	        return "EditarCaso";
+	    } else {
+	    	logger.error("No se encontraron casos Relacionados 404 Not Found");
+	        return "redirect:/Error404";
+	    }
+	}
+	
+	/*
 	 * Guarda el caso Actualizado POST
 	 */
 	
@@ -107,7 +115,7 @@ public class UsersAllController {
 		
 		if(casos == null) {
 			logger.error("El caso a modificar no existe en la BD.");
-			return "redirect:/HomeCasoUser";
+			return "redirect:/Error404";
 		}
 		casos.setDescripcion(casosReq.getDescripcion());
 		casos.setTelefono(casosReq.getTelefono());
@@ -122,15 +130,15 @@ public class UsersAllController {
 	 * Metodo de eliminar Casos
 	 */
 	
-	@DeleteMapping("/Casos/{id_caso}")
-	public ResponseEntity<?> eliminarCasos(@PathVariable Long id_caso){
+	@GetMapping("/Casos/{id_caso}")
+	public String eliminarCasos(@PathVariable Long id_caso){
 		Optional<Casos> casos = casosRepository.findById(id_caso);
 		if(!casos.isPresent()) {
 			logger.error("Caso no encontrado en la BD.");
-			return ResponseEntity.notFound().build();
+			return "redirect:/Error404"; //Crear pagina Not Found 404
 		}
 		casosRepository.deleteById(id_caso);
-		return ResponseEntity.ok().build();
+		return "redirect:/HomeCasoUser";
 		
 	}
 	

@@ -5,7 +5,6 @@
 <meta charset="utf-8">
 <title>Bienvenido</title>
 <link href="/css/StyleHomeCrearCaso.css" rel="stylesheet">
-<!--<link th:href="#" rel="stylesheet">-->
 <html lang="es" xmlns:th="http://www.thymeleaf.org">
 </head>
 <body>
@@ -26,6 +25,9 @@
 			</a></li>
 			<li><a href="#"> <i class="fa fa-cogs fa-2x"></i> <span
 					class="nav-text"> Configuración Del Sistema </span>
+			</a></li>
+			<li><a href="#"> <i class="fa fa-comment fa-2x"></i> <span
+					class="nav-text"> Chat en Linea </span>
 			</a></li>
 			<li><a href="#"> <i class="fa fa-info fa-2x"></i> <span
 					class="nav-text"> Información Adicional </span>
@@ -59,7 +61,7 @@
 				<th scope="col"><strong><center>TELEFONO</center></strong></th>
 				<th scope="col"><strong><center>FECHA DE CREACIÓN</center></strong></th>
 				<th scope="col"><strong><center>ESTADO ACTUAL</center></strong></th>
-				<th scope="col"><strong><center>ACCIONES</center></strong></th>
+				<th style="width: 20%;" scope="col"><strong><center>ACCIONES CASOS EMP</center></strong></th>
 			</tr>
 		</thead>
 		<tbody>
@@ -70,8 +72,8 @@
 				<td style="text-align: center;" th:text="${caso.fecha_creacion}"></td>
 				<td style="text-align: center;" th:text="${caso.estado_caso}"></td>
 				<td><center><a th:href="@{/ModificarCasos/{id_caso}(id_caso=${caso.id_caso})}">
-						<button style="background-color: #A0AFF6; border-radius: 5px; text-align: center; border-style: 1px;" type="button" class="btn btn-primary">MODIFICAR CASO</button>
-				</a></center></td>
+						<button style="background-color: #A0AFF6; border-radius: 5px; text-align: center; border-style: 1px; position: relative; right: 10px" type="button" class="btn btn-primary">MODIFICAR CASO</button>
+						<a th:href="@{/Casos/{id_caso}(id_caso=${caso.id_caso})}"><button style="background-color: #A0AFF6; border-radius: 5px; text-align: center; border-style: 1px; position: relative; right: 10px" type="button" class="btn btn-primary">ELIMINAR CASO</button></a>
 			</tr>
 		</tbody>
 </body>
