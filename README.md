@@ -17,9 +17,10 @@ Proyecto De Registro y Modificación de Casos - Login Único "Usuario" - Spring 
 - Configuracion grafica del sistema (MODO DARK Y CLARO) -> EN DESARROLLO
 - Panel de Comentarios - Ususarios -> EN DESARROLLO
 - Integraciones en diferentes paneles con APIS de Google Maps, Facebook y Twitter -> EN DESARROLLO
-- Eliminacion directa de Casos -> EN DESARROLLO
+- Eliminacion directa de Casos -> COMPLETADO
 - Inicio de sesion en Modo Admin -> EN DESARROLLO
 - Deslogueo automatico de usuarios mediane tiempo de espera en linea -> EN DESARROLLO
 
 # FUTURAS INTEGRACIONES
 - Entorno Docker
+- Socket.io en Chat
