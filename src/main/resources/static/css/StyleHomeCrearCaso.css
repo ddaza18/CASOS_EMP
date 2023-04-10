@@ -151,7 +151,6 @@ table {
 .table th,
 .table td {
   font-weight: normal;
-  font-size: 12px;
   padding: 8px 15px;
   line-height: 20px;
   text-align: left;
@@ -164,7 +163,7 @@ table {
 }   
 .table tbody > tr:nth-child(odd) > td,
 .table tbody > tr:nth-child(odd) > th {
-  background-color: #fafafa;
+  background-color: #dddddd;
 }    
 .table .t-small {
   width: 5%;

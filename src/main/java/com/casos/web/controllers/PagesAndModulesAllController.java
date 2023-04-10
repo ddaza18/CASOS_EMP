@@ -33,8 +33,8 @@ import com.casos.web.service.CasosService;
 
 @Controller
 @RequestMapping("/")
-public class UsersAllController {
-	public static final Logger logger = LoggerFactory.getLogger(UsersAllController.class);
+public class PagesAndModulesAllController {
+	public static final Logger logger = LoggerFactory.getLogger(PagesAndModulesAllController.class);
 
 	@Autowired
 	private CasosRepository casosRepository;
@@ -151,6 +151,15 @@ public class UsersAllController {
 		model.addAttribute("casos",casos);
 		logger.info("Se Encuentran Filtrando Casos");
 		return "HomeCasoUser";
+	}
+	
+	/**
+	 * GET chat en linea
+	 */
+	@GetMapping("/ChatLineLive")
+	public String chatLineLive() { //configuracion del chat en NodeJs + Socket.io
+		logger.info("Se entro al Chat en linea");
+		return "ChatLine"; 
 	}
 	
 }
