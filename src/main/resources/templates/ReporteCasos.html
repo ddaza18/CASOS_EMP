@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reportes Casos EMP</title>
+    <link rel="stylesheet" href="/css/StyleHomeCrearCaso.css"> 
+    </head>
+<body>
+	<div class="area"></div>
+	<nav class="main-menu">
+		<ul>
+			<li>
+				<h6 style="color: white; position: relative; left: 25px;">PANEL
+					DE ACCIONES (EMP)</h6> <a th:href="@{/CrearCasos}"> <i
+					class="fa fa-book fa-2x"></i> <span class="nav-text"> Crear
+						Caso </span>
+			</a>
+			</li>
+			<li><a th:href="@{/HomeCasoUser}"> <i
+					class="fa fa-home fa-2x"></i> <span class="nav-text"> Mis
+						Casos </span>
+			</a></li>
+			<li><a href="#"> <i class="fa fa-cogs fa-2x"></i> <span
+					class="nav-text"> Configuración Del Sistema </span>
+			</a></li>
+			<li><a th:href="@{/Reportes}"> <i class="fa fa-inbox fa-2x"></i> <span
+					class="nav-text"> Reporte Casos </span>
+			</a></li>
+			<li><a href="#"> <i class="fa fa-info fa-2x"></i> <span
+					class="nav-text"> Información Adicional </span>
+			</a></li>
+		</ul>
+
+		<ul class="logout">
+			<li><a th:href="@{/logout}" sec:authorize="isAuthenticated()">
+					<i class="fa fa-power-off fa-2x"></i> <span class="nav-text">
+						Cerrar Sesion </span>
+			</a></li>
+		</ul>
+	</nav>
+	<!-- REPORTES  -->
+	<h2 style=" text-align: center;">REPORTE DE CASOS EMP</h2>
+	<center>
+		<a th:href="@{/reporte-casos}" class="btn btn-primary">Generar reporte</a>
+	</center>
+</body>
+</html>

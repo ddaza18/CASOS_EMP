@@ -25,7 +25,6 @@ public class Casos {
 	@DateTimeFormat(pattern="yyyy-MM-dd'T'HH:mm:ss")
 	private Date fecha_creacion;
 	private String estado_caso;
-	
 	@ManyToOne
 	@JoinColumn(name = "usuario_id")
 	private Usuario usuario;

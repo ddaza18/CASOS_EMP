@@ -20,7 +20,7 @@ import org.springframework.web.server.ResponseStatusException;
 import com.casos.web.dto.UsersRegisterDTO;
 import com.casos.web.model.RolUsersModel;
 import com.casos.web.model.Usuario;
-import com.casos.web.repository.UsuarioRepositorio;
+import com.casos.web.repository.UsuarioRepository;
 
 @Service
 public class UsersServiceImpl implements UsersService{
@@ -30,10 +30,10 @@ public class UsersServiceImpl implements UsersService{
 	 @Autowired
 	 private BCryptPasswordEncoder bCryptPasswordEncoder;
 
-	private UsuarioRepositorio usersRepository;
+	private UsuarioRepository usersRepository;
 	
 	
-	public UsersServiceImpl(UsuarioRepositorio usersRepository) {
+	public UsersServiceImpl(UsuarioRepository usersRepository) {
 		super();
 		this.usersRepository = usersRepository;
 	}

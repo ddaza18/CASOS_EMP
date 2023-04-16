@@ -5,31 +5,34 @@ import java.time.ZoneId;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
-
-import javax.management.Query;
-import javax.swing.JWindow;
+import javax.servlet.http.HttpServletResponse;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.casos.web.model.Casos;
+import com.casos.web.model.ReportesCasos;
 import com.casos.web.model.Usuario;
 import com.casos.web.repository.CasosRepository;
-import com.casos.web.repository.UsuarioRepositorio;
+import com.casos.web.repository.UsuarioRepository;
 import com.casos.web.service.CasosService;
+import com.casos.web.service.ReportsService;
+import com.itextpdf.text.Document;
+import com.itextpdf.text.pdf.PdfPTable;
+import com.itextpdf.text.pdf.PdfWriter;
 
 @Controller
 @RequestMapping("/")
@@ -40,11 +43,14 @@ public class PagesAndModulesAllController {
 	private CasosRepository casosRepository;
 	
 	@Autowired
-	private UsuarioRepositorio usuarioRepositorio;
+	private UsuarioRepository usuarioRepositorio;
 	
 	@Autowired
 	private CasosService casosService;
-
+	
+	@Autowired
+	private ReportsService reportesCasos;
+	
 	
 	@GetMapping("/Error404")
 	public String paginaNoEncontrada() {
@@ -154,12 +160,51 @@ public class PagesAndModulesAllController {
 	}
 	
 	/**
-	 * GET chat en linea
+	 * Get pagina de reporte de casos
 	 */
-	@GetMapping("/ChatLineLive")
-	public String chatLineLive() { //configuracion del chat en NodeJs + Socket.io
-		logger.info("Se entro al Chat en linea");
-		return "ChatLine"; 
+	@GetMapping("/Reportes")
+	public String reportesCasos() {
+		logger.info("Se entro a Reporte de casos");
+		return "ReporteCasos"; 
+	}
+	
+	@GetMapping("/reporte-casos")
+	public void generarReporteCasos(HttpServletResponse response) {
+	        try {
+	            List<ReportesCasos> repcasos = reportesCasos.obtenerReportesCasos();
+
+	            response.setContentType("application/pdf");
+	            response.setHeader("Content-Disposition", "attachment; filename=\"ReporteCasosEmp.pdf\"");
+	            Document document = new Document();
+	            PdfWriter.getInstance(document, response.getOutputStream());
+	            document.open();
+
+	            PdfPTable table = new PdfPTable(7);
+	            table.addCell("ID CASO");
+	            table.addCell("FECHA CREACION");
+	            table.addCell("DESCRIPCION");
+	            table.addCell("TELEFONO");
+	            table.addCell("AGENTE EMP");
+	            table.addCell("CORREO AGENTE EMP");
+	            table.addCell("ESTADO");
+
+	            for(ReportesCasos reportesCasos : repcasos) {
+	                table.addCell(reportesCasos.getId().toString());
+	                table.addCell(reportesCasos.getFechaCreacion().toString());
+	                table.addCell(reportesCasos.getDescripcion().toString());
+	                table.addCell(reportesCasos.getTelefonoCaso().toString());
+	                table.addCell(reportesCasos.getUsuarioCrea().toString());
+	                table.addCell(reportesCasos.getCorreoUsuarioCrea().toString());
+	                table.addCell(reportesCasos.getEstado().toString());
+	            }
+
+	            document.add(table);
+	            document.close();
+
+	        } catch (Exception e) {
+	            logger.error("No se pudo generar el reporte de casos 'generarReporteCasos'");
+	            e.getMessage();
+	        }
 	}
 	
 }
