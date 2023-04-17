@@ -13,7 +13,6 @@ Proyecto De Registro y Modificación de Casos - Login Único "Usuario" - Spring 
 
 
 # PROXIMAS FUNCIONALIDADES:
-- Configuracion grafica del sistema (MODO DARK Y CLARO) -> EN DESARROLLO
 - Panel de Comentarios - Usuarios -> EN DESARROLLO
 - Integraciones en diferentes paneles con APIS de Google Maps, Facebook y Twitter -> EN DESARROLLO
 - Eliminacion directa de Casos -> COMPLETADO
