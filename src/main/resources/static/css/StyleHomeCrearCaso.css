@@ -202,3 +202,48 @@ table {
     display: block;
   }
 }
+
+.infoReportes {
+	background-color: #7D9AD4;
+	width: 50%;
+	height: 350px;
+	position: relative;
+	left: 100px;
+	border-radius: 5px;
+	padding: 15px 20px 30px;
+	margin-top: 20px;
+	bottom: 70px;
+}
+.infoReportes p {
+  font-size: 16px;
+  text-align: justify;
+  margin-bottom: 0;
+  font-size: 1.2em;
+}
+
+.infoItext{
+	background-color: #7D9AD4;
+	width: 50%;
+	height: 250px;
+	position: relative;
+	left: 100px;
+	border-radius: 5px;
+	padding: 15px 20px 30px;
+	margin-top: 20px;
+	bottom: 70px;
+}
+.infoItext p{
+	font-size: 16px;
+  text-align: justify;
+  margin-bottom: 0;
+  font-size: 1.2em;
+}
+.imagen{
+	height: 10px;
+	position: relative;
+	bottom: 500px;
+	left: 66%;
+	width: 260px;
+	top: -700px
+	
+}

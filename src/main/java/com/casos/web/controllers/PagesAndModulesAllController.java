@@ -5,6 +5,8 @@ import java.time.ZoneId;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
+import java.util.concurrent.Phaser;
+
 import javax.servlet.http.HttpServletResponse;
 
 import org.slf4j.Logger;
@@ -31,6 +33,9 @@ import com.casos.web.repository.UsuarioRepository;
 import com.casos.web.service.CasosService;
 import com.casos.web.service.ReportsService;
 import com.itextpdf.text.Document;
+import com.itextpdf.text.Element;
+import com.itextpdf.text.Font;
+import com.itextpdf.text.Phrase;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
 
@@ -170,34 +175,35 @@ public class PagesAndModulesAllController {
 	
 	@GetMapping("/reporte-casos")
 	public void generarReporteCasos(HttpServletResponse response) {
+		Font fontNegrilla = new Font(Font.FontFamily.TIMES_ROMAN, 12, Font.BOLD);
+		Font fontNormal = new Font(Font.FontFamily.TIMES_ROMAN, 12);
 	        try {
 	            List<ReportesCasos> repcasos = reportesCasos.obtenerReportesCasos();
 
 	            response.setContentType("application/pdf");
 	            response.setHeader("Content-Disposition", "attachment; filename=\"ReporteCasosEmp.pdf\"");
 	            Document document = new Document();
+	            
 	            PdfWriter.getInstance(document, response.getOutputStream());
 	            document.open();
-
 	            PdfPTable table = new PdfPTable(7);
-	            table.addCell("ID CASO");
-	            table.addCell("FECHA CREACION");
-	            table.addCell("DESCRIPCION");
-	            table.addCell("TELEFONO");
-	            table.addCell("AGENTE EMP");
-	            table.addCell("CORREO AGENTE EMP");
-	            table.addCell("ESTADO");
+	            table.addCell(new Phrase("ID CASO" , fontNegrilla));
+	            table.addCell(new Phrase("FECHA CREACION", fontNegrilla));
+	            table.addCell(new Phrase("DESCRIPCION", fontNegrilla));
+	            table.addCell(new Phrase("TELEFONO", fontNegrilla));
+	            table.addCell(new Phrase("AGENTE EMP", fontNegrilla));
+	            table.addCell(new Phrase("CORREO AGENTE EMP", fontNegrilla));
+	            table.addCell(new Phrase("ESTADO", fontNegrilla));
 
 	            for(ReportesCasos reportesCasos : repcasos) {
-	                table.addCell(reportesCasos.getId().toString());
-	                table.addCell(reportesCasos.getFechaCreacion().toString());
-	                table.addCell(reportesCasos.getDescripcion().toString());
-	                table.addCell(reportesCasos.getTelefonoCaso().toString());
-	                table.addCell(reportesCasos.getUsuarioCrea().toString());
-	                table.addCell(reportesCasos.getCorreoUsuarioCrea().toString());
-	                table.addCell(reportesCasos.getEstado().toString());
+	                table.addCell(new Phrase (reportesCasos.getId().toString(),fontNormal));
+	                table.addCell(new Phrase(reportesCasos.getFechaCreacion().toString(),fontNormal));
+	                table.addCell(new Phrase(reportesCasos.getDescripcion().toString(),fontNormal));
+	                table.addCell(new Phrase(reportesCasos.getTelefonoCaso().toString(),fontNormal));
+	                table.addCell(new Phrase(reportesCasos.getUsuarioCrea().toString(),fontNormal));
+	                table.addCell(new Phrase(reportesCasos.getCorreoUsuarioCrea().toString(),fontNormal));
+	                table.addCell(new Phrase(reportesCasos.getEstado().toString(),fontNormal));
 	            }
-
 	            document.add(table);
 	            document.close();
 

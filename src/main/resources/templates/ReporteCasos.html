@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Reportes Casos EMP</title>
-    <link rel="stylesheet" href="/css/StyleHomeCrearCaso.css"> 
-    </head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Reportes Casos EMP</title>
+<link rel="stylesheet" href="/css/StyleHomeCrearCaso.css">
+</head>
 <body>
 	<div class="area"></div>
 	<nav class="main-menu">
@@ -25,8 +25,8 @@
 			<li><a href="#"> <i class="fa fa-cogs fa-2x"></i> <span
 					class="nav-text"> Configuración Del Sistema </span>
 			</a></li>
-			<li><a th:href="@{/Reportes}"> <i class="fa fa-inbox fa-2x"></i> <span
-					class="nav-text"> Reporte Casos </span>
+			<li><a th:href="@{/Reportes}"> <i class="fa fa-inbox fa-2x"></i>
+					<span class="nav-text"> Reporte Casos </span>
 			</a></li>
 			<li><a href="#"> <i class="fa fa-info fa-2x"></i> <span
 					class="nav-text"> Información Adicional </span>
@@ -41,9 +41,63 @@
 		</ul>
 	</nav>
 	<!-- REPORTES  -->
-	<h2 style=" text-align: center;">REPORTE DE CASOS EMP</h2>
-	<center>
-		<a th:href="@{/reporte-casos}" class="btn btn-primary">Generar reporte</a>
-	</center>
+	<h2
+		style="text-align: center; background-color: #878787; position: relative; top: -20px">REPORTE
+		DE CASOS EMP</h2>
+	<button
+		style="position: relative; left: 74%; top: 610px; border-radius: 5px; background-color: #7184DA; width: 220px; height: 50px">
+		<a style="text-decoration: none; color: black; font-size: 1.5em;"
+			th:href="@{/reporte-casos}" class="btn btn-primary">GENERAR
+			REPORTE</a>
+	</button>
+
+	<div class="infoReportes">
+		<h3 style="text-align: center;">INFORMACION REPORTES</h3>
+		<p>Los reportes de casos EMP son un componente crítico del proceso
+			de gestión de incidencias en cualquier organización. Estos informes
+			se utilizan para documentar y rastrear la resolución de incidentes
+			que afectan los recursos de tecnología de la información de la
+			empresa. En general, los casos EMP se abren cuando se detecta un
+			problema o una interrupción en el funcionamiento de un sistema,
+			aplicación o servicio de TI en la empresa. Una vez que se abre un
+			caso EMP, se asigna a un técnico de soporte o a un equipo de soporte
+			para su resolución. Durante el proceso de resolución del caso EMP, el
+			técnico o equipo de soporte responsable trabajará para identificar la
+			causa raíz del problema, implementar medidas de mitigación temporales
+			y permanentes, y luego probar y verificar que el sistema o servicio
+			afectado se esté ejecutando correctamente. Una vez que se ha resuelto
+			el problema y se han implementado las medidas de mitigación
+			necesarias, se cierra el caso EMP y se documenta la resolución del
+			problema en el informe de incidente correspondiente. Es importante
+			que todos los detalles relevantes del caso EMP se documenten con
+			precisión y se archiven para futuras referencias. En conclusión, los
+			reportes de casos EMP son una herramienta importante en el proceso de
+			gestión de incidencias de cualquier organización. Al documentar y
+			rastrear la resolución de problemas de TI, las empresas pueden
+			mejorar su capacidad para gestionar y mantener sus sistemas y
+			servicios de forma efectiva y eficiente.</p>
+	</div>
+
+	<div class="infoItext">
+		<h3 style="text-align: center;">INFORMACION REPORTES CON
+			"ITEXTPDF"</h3>
+		<p>La dependencia iTextPDF es una herramienta de software que
+			permite a los desarrolladores crear y modificar documentos en formato
+			PDF en aplicaciones de programación. Esto significa que con iTextPDF,
+			los programadores pueden escribir programas para crear archivos PDF,
+			como los que se usan para mostrar documentos o formularios en línea.
+			También permite agregar elementos como imágenes, gráficos y texto a
+			los documentos PDF. La dependencia iTextPDF es muy útil para empresas
+			que necesitan generar informes, facturas y otros documentos
+			importantes en formato PDF, ya que garantiza que los documentos se
+			verán iguales en cualquier dispositivo y pueden ser protegidos con
+			contraseñas y firmas digitales para mantener la seguridad de la
+			información. Además de permitir la creación y manipulación de documentos 
+			PDF, la dependencia iTextPDF también ofrece características avanzadas para mejorar la funcionalidad y la experiencia del usuario en las aplicaciones.</p>
+	</div>
+	<div class="imagen">
+	<img src="https://cdn-icons-png.flaticon.com/512/3094/3094836.png" alt="Reporte de incidencias">
+	</div>
+	
 </body>
 </html>
