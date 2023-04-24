@@ -6,7 +6,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -33,22 +32,27 @@ public class AdminController {
 	/**
 	 * Get landing page admin
 	 */
-	@GetMapping("/HomeAdmin")
+	@GetMapping("/HomeCasoAdmin")
 	public String homeAdmin() {
 		LOG.info("Se entro a la landing page de administrativos EMP");
 		return "HomeCasoAdmin";
 	}
 	
 	@PostMapping("/loginAdmin/login")
-	public String adminLoginValidate(@RequestParam("admin_us") String adminUs, @RequestParam("token") String token, HttpServletRequest req, Model model) {
-		if(adminService.validateTokenAndUserAdmin(adminUs, token)) {
+	public String adminLoginValidate(@RequestParam("admin") String admin, @RequestParam("token") String token, HttpServletRequest req) {
+		if(adminService.validateTokenAndUserAdmin(admin, token)) {
 			req.getSession().setAttribute("ModoAdmin", true);
-			model.addAttribute("success","Modo Administrador activado");
 			return "redirect:/HomeCasoAdmin";
 		}else {
-			model.addAttribute("error","Credenciales Invalidas");
 			return "loginAdmin";
 		}
+	}
+	
+	@GetMapping("/loginAdmin/login")
+	public String logOutAdminMode(HttpServletRequest req) {
+		req.getSession().setAttribute("ModoAdmin", false);
+		LOG.info("Volviendo al modo USER...");
+		return "redirect:/loginAdmin";
 	}
 	
 	

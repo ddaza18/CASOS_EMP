@@ -9,31 +9,33 @@ public class Administrador {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id_admin;
-	private String admin_us;
+	private Long id;
+	private String admin;
 	private String token;
 	
 	@ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	@JoinTable(name = "usuarios_casos_roles", joinColumns = 
-	@JoinColumn(name = "user_id", referencedColumnName = "id_admin"), inverseJoinColumns = 
+	@JoinColumn(name = "user_id", referencedColumnName = "id"), inverseJoinColumns = 
 	@JoinColumn(name = "rol_id", referencedColumnName = "id_rol"))
 	
 	private Collection<RolUsersModel> rol_admin;
 
+	
+
 	public Long getId() {
-		return id_admin;
+		return id;
 	}
 
-	public void setId(Long id_admin) {
-		this.id_admin = id_admin;
+	public void setId(Long id) {
+		this.id = id;
 	}
 
-	public String getUser() {
-		return admin_us;
+	public String getAdmin() {
+		return admin;
 	}
 
-	public void setUser(String admin_us) {
-		this.admin_us = admin_us;
+	public void setAdmin(String admin) {
+		this.admin = admin;
 	}
 
 	public String getToken() {
