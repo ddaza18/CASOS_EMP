@@ -8,5 +8,4 @@ import com.casos.web.model.Administrador;
 public interface AdminRepository extends JpaRepository<Administrador, Long>  {
 
 	public Administrador findByAdminUsAndToken(String admin, String token);
-	
 }

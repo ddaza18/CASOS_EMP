@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<head>
+<meta charset="utf-8">
+<title>Correo</title>
+<link href="/css/StyleHomeCrearCaso.css" rel="stylesheet">
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+</head>
+<body>
+</head>
+<body>
+	<div class="area"></div>
+	<nav class="main-menu">
+		<ul>
+			<li>
+				<h6 style="color: white; position: relative; left: 25px;">PANEL
+					DE ACCIONES ADMIN (EMP)</h6>
+			</li>
+			<li><a th:href="@{/HomeCasoAdmin}"> <i
+					class="fa fa-home fa-2x"></i> <span class="nav-text">Gestionar
+						Casos </span>
+			</a></li>
+			<li><a href="#"> <i class="fa fa-cogs fa-2x"></i> <span
+					class="nav-text"> Configuración Del Sistema </span>
+			</a></li>
+			<li><a th:href="@{/Reportes}"> <i class="fa fa-inbox fa-2x"></i>
+					<span class="nav-text"> Reporte Casos (GENERAL) </span>
+			</a></li>
+			<li><a th:href="@{/CorreoCasosEMP}"> <i class="fa fa fa-comment"></i> <span
+					class="nav-text"> Correo Comunicacion </span>
+			</a></li>
+			</a>
+			</li>
+		</ul>
+		<ul class="logout">
+			<li><a th:href="@{/loginAdmin/login}"> <i
+					class="fa fa-power-off fa-2x"></i> <span class="nav-text">
+						Volver Modo USER </span>
+			</a></li>
+		</ul>
+	</nav>
+	<h2
+		style="background-color: #878787; text-align: center; color: #000; position: relative; left: 25px; bottom: 20px; width: 99%;">GESTION DE CASOS CON ENVIO DE CORREO</h2>
+		
+	<!-- FORMULARIO ENVIO DE CORREO -->
+	<form th:action="@{/sendMailPrueba}">
+	 <button type="submit">Enviar correo electrónico</button>
+	</form>
+</body>
+</html>

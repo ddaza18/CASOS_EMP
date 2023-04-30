@@ -13,39 +13,34 @@
 		<ul>
 			<li>
 				<h6 style="color: white; position: relative; left: 25px;">PANEL
-					DE ACCIONES (EMP)</h6> <a th:href="@{/CrearCasos}"> <i
-					class="fa fa-book fa-2x"></i> <span class="nav-text"> Crear
-						Caso </span>
-			</a>
+					DE ACCIONES ADMIN (EMP)</h6>
 			</li>
-			<li><a th:href="@{/HomeCasoUser}"> <i
-					class="fa fa-home fa-2x"></i> <span class="nav-text"> Mis
+			<li><a th:href="@{/HomeCasoAdmin}"> <i
+					class="fa fa-home fa-2x"></i> <span class="nav-text">Gestionar
 						Casos </span>
 			</a></li>
 			<li><a href="#"> <i class="fa fa-cogs fa-2x"></i> <span
 					class="nav-text"> Configuración Del Sistema </span>
 			</a></li>
 			<li><a th:href="@{/Reportes}"> <i class="fa fa-inbox fa-2x"></i>
-					<span class="nav-text"> Reporte Casos </span>
+					<span class="nav-text"> Reporte Casos (GENERAL) </span>
 			</a></li>
-			<li><a href="#"> <i class="fa fa-info fa-2x"></i> <span
-					class="nav-text"> Información Adicional </span>
+			<li><a th:href="@{/CorreoCasosEMP}"> <i class="fa fa fa-comment"></i> <span
+					class="nav-text"> Correo Comunicacion </span>
 			</a></li>
-			<li><a th:href="@{/loginAdmin}"> <i class="fa fas fa-eye"></i> <span
-					class="nav-text">Administrativos EMP</span>
-			</a></li>
+			</a>
+			</li>
 		</ul>
-
 		<ul class="logout">
-			<li><a th:href="@{/logout}" sec:authorize="isAuthenticated()">
-					<i class="fa fa-power-off fa-2x"></i> <span class="nav-text">
-						Cerrar Sesion </span>
+			<li><a th:href="@{/loginAdmin/login}"> <i
+					class="fa fa-power-off fa-2x"></i> <span class="nav-text">
+						Volver Modo USER </span>
 			</a></li>
 		</ul>
 	</nav>
 	<!-- REPORTES  -->
 	<h2
-		style="text-align: center; background-color: #878787; position: relative; top: -20px">REPORTE
+		style="text-align: center; background-color: #878787; position: relative; top: -20px;  width: 100%; ">REPORTE
 		DE CASOS EMP</h2>
 	<button
 		style="position: relative; left: 74%; top: 610px; border-radius: 5px; background-color: #7184DA; width: 220px; height: 50px">

@@ -8,9 +8,81 @@
 <html lang="es" xmlns:th="http://www.thymeleaf.org">
 </head>
 <body>
-	<h1>Modo ADMIN activado</h1>
-	<a th:href="@{/loginAdmin/login}" class="btn btn-primary">Volver al modo usuario</a>
-	
+	<div class="area"></div>
+	<nav class="main-menu">
+		<ul>
+			<li>
+				<h6 style="color: white; position: relative; left: 25px;">PANEL
+					DE ACCIONES ADMIN (EMP)</h6>
+			</li>
+			<li><a th:href="@{/HomeCasoAdmin}"> <i
+					class="fa fa-home fa-2x"></i> <span class="nav-text">Gestionar
+						Casos </span>
+			</a></li>
+			<li><a href="#"> <i class="fa fa-cogs fa-2x"></i> <span
+					class="nav-text"> Configuración Del Sistema </span>
+			</a></li>
+			<li><a th:href="@{/Reportes}"> <i class="fa fa-inbox fa-2x"></i>
+					<span class="nav-text"> Reporte Casos (GENERAL) </span>
+			</a></li>
+			<li><a th:href="@{/CorreoCasosEMP}"> <i class="fa fa fa-comment"></i> <span
+					class="nav-text"> Correo Comunicacion </span>
+			</a></li>
+			</a>
+			</li>
+		</ul>
+		<ul class="logout">
+			<li><a th:href="@{/loginAdmin/login}"> <i
+					class="fa fa-power-off fa-2x"></i> <span class="nav-text">
+						Volver Modo USER </span>
+			</a></li>
+		</ul>
+	</nav>
+	<h2
+		style="background-color: #878787; text-align: center; color: #000; position: relative; left: 25px; bottom: 20px; width: 99%;">CASOS
+		GENERALES DE AGENTES EMP</h2>
+	<!-- FILTRO DE CASOS POR DESCRIPCIÓN -->
+	<form th:action="@{/filtrar}" method="GET"
+		style="position: relative; left: 80%; width: 13%">
+		<input type="text" name="filtro"
+			placeholder="Filtro por Descripción...">
+		<button style="background-color: #A0AFF6; border-radius: 5px;"
+			type="submit">Filtrar</button>
+	</form>
+	<br>
+	<!-- TABLA DE CASOS GENERALES -->
+	<table class="table">
+		<thead>
+			<tr style="background-color: #bdb8b8;">
+				<th scope="col"><strong><center>DESCRIPCIÓN</center></strong></th>
+				<th scope="col"><strong><center>USUARIO(EMP)</center></strong></th>
+				<th scope="col"><strong><center>TELEFONO</center></strong></th>
+				<th scope="col"><strong><center>FECHA DE
+							CREACIÓN</center></strong></th>
+				<th scope="col"><strong><center>ESTADO ACTUAL</center></strong></th>
+				<th style="width: 20%;" scope="col"><strong><center>ACCIONES
+							CASOS EMP</center></strong></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="caso : ${casos}">
+				<td style="text-align: center;" th:text="${caso.descripcion}"></td>
+				<td style="text-align: center;" th:text="${caso.usuario.email}"></td>
+				<td style="text-align: center;" th:text="${caso.Telefono}"></td>
+				<td style="text-align: center;" th:text="${caso.fecha_creacion}"></td>
+				<td style="text-align: center;" th:text="${caso.estado_caso}"></td>
+				<td><center>
+						<a href="#">
+							<button
+								style="background-color: #A0AFF6; border-radius: 5px; text-align: center; border-style: 1px; position: relative; right: 82px; top: 10px;"
+								type="button" class="btn btn-primary">SOLUCIONAR CASO</button>
+						</a>
+						<button
+							style="background-color: #A0AFF6; border-radius: 5px; text-align: center; border-style: 1px; position: relative; right: -70px; bottom: 12px;"
+							type="button" class="btn btn-primary">NO SOLUCION CASO</button>
+						</a>
+			</tr>
+		</tbody>
 </body>
 </html>
 
