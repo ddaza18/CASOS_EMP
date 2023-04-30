@@ -19,6 +19,7 @@ Proyecto De Registro y Modificación de Casos - Login Único "Usuario" - Spring 
 - Inicio de sesion en Modo Admin -> COMPLETADO ✅
 - Deslogueo automatico de usuarios mediane tiempo de espera en linea -> COMPLETADO✅
 - Modulos en modo ADMIN -> EN DESARROLLO
+- Envio de Correos modo ADMIN -> EN DESARROLLO
 
 # FUTURAS INTEGRACIONES
 - Entorno Docker
