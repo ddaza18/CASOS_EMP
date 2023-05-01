@@ -4,7 +4,7 @@
 <head>
 <meta charset="utf-8">
 <title>Correo</title>
-<link href="/css/StyleHomeCrearCaso.css" rel="stylesheet">
+<link href="/css/StyleCorreo.css" rel="stylesheet">
 <html lang="es" xmlns:th="http://www.thymeleaf.org">
 </head>
 <body>
@@ -27,8 +27,9 @@
 			<li><a th:href="@{/Reportes}"> <i class="fa fa-inbox fa-2x"></i>
 					<span class="nav-text"> Reporte Casos (GENERAL) </span>
 			</a></li>
-			<li><a th:href="@{/CorreoCasosEMP}"> <i class="fa fa fa-comment"></i> <span
-					class="nav-text"> Correo Comunicacion </span>
+			<li><a th:href="@{/CorreoCasosEMP}"> <i
+					class="fa fa fa-comment"></i> <span class="nav-text"> Correo
+						Comunicacion </span>
 			</a></li>
 			</a>
 			</li>
@@ -41,11 +42,21 @@
 		</ul>
 	</nav>
 	<h2
-		style="background-color: #878787; text-align: center; color: #000; position: relative; left: 25px; bottom: 20px; width: 99%;">GESTION DE CASOS CON ENVIO DE CORREO</h2>
-		
+		style="background-color: #878787; text-align: center; color: #000; position: relative; left: 25px; bottom: 20px; width: 99%;">GESTION
+		DE CASOS CON ENVIO DE CORREO</h2>
+
 	<!-- FORMULARIO ENVIO DE CORREO -->
-	<form th:action="@{/sendMailPrueba}">
-	 <button type="submit">Enviar correo electrónico</button>
-	</form>
+	<div class="enviodeCorreo">
+		<form th:action="@{/sendMail}">
+			<h1>CORREO CASOS EMP</h1>
+			<input name="para" id="para" class="para" type="email"
+				placeholder="Para ej: ejemplo@ejemplo.com" required value="" /> <input
+				name="subject" id="subject" class="subject" type="text"
+				placeholder="Asunto Caso EMP" required value="" />
+			<textarea name="cont" id="cont" class="cont"
+				placeholder="Contenido Caso EMP" rows="6" required></textarea>
+			<button id="enviar" name="enviar" type="submit" class="btn">ENVIAR</button>
+		</form>
+	</div>
 </body>
 </html>

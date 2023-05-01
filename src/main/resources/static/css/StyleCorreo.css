@@ -142,126 +142,46 @@ nav ul, nav li {
 }
 
 <!--
-ESTILOS TBLA DE CASOS-->table {
-	font-family: arial;
-	max-width: 100%;
-	background-color: transparent;
-	border-collapse: collapse;
-	border-spacing: 0;
+FORM DE ENVIO DE CORREO-->.enviodeCorreo {
+	
 }
 
-.table {
+form {
 	position: relative;
 	left: 150px;
-	width: 85%;
-	margin-bottom: 20px;
-}
-
-.table th, .table td {
-	font-weight: normal;
-	padding: 8px 15px;
-	line-height: 20px;
-	text-align: left;
-	vertical-align: middle;
-	border-top: 1px solid #BCBCBC;
-}
-
-.table thead th {
-	background: #7184DA;
-	vertical-align: bottom;
-}
-
-.table tbody>tr:nth-child(odd)>td, .table tbody>tr:nth-child(odd)>th {
-	background-color: #dddddd;
-}
-
-.table .t-small {
-	width: 5%;
-}
-
-.table .t-medium {
-	width: 15%;
-}
-
-.table .t-status {
-	font-weight: bold;
-}
-
-.table .t-active {
-	color: #46a546;
-}
-
-.table .t-inactive {
-	color: #e00300;
-}
-
-.table .t-draft {
-	color: #f89406;
-}
-
-.table .t-scheduled {
-	color: #049cdb;
-}
-
-/* Small Sizes */
-@media ( max-width : 480px) {
-	.table-action thead {
-		display: none;
-	}
-	.table-action tr {
-		border-bottom: 1px solid #dddddd;
-	}
-	.table-action td {
-		border: 0;
-	}
-	.table-action td:not(:first-child) {
-		display: block;
-	}
-}
-
-.infoReportes {
-	background-color: #7D9AD4;
-	width: 50%;
-	height: 350px;
-	position: relative;
-	left: 100px;
+	top: 20px;
+	padding: 60px;
+	max-width: 800px;
+	background-color: #E7E7E7;
+	margin: 2 auto;
 	border-radius: 5px;
-	padding: 15px 20px 30px;
-	margin-top: 20px;
-	bottom: 70px;
 }
 
-.infoReportes p {
-	font-size: 16px;
-	text-align: justify;
-	margin-bottom: 0;
-	font-size: 1.2em;
+form h1{
+	font-family: "Segoe UI";
 }
 
-.infoItext {
-	background-color: #7D9AD4;
-	width: 50%;
-	height: 250px;
-	position: relative;
-	left: 100px;
-	border-radius: 5px;
-	padding: 15px 20px 30px;
-	margin-top: 20px;
-	bottom: 70px;
+form input, form textarea {
+	margin-bottom: 15px;
+	font-family: "Segoe UI";
+	width: 100%;
+	padding: 10px;
+	box-sizing: border-box;
+	border: none;
+	color: #525c66;
+	font-size: 1em;
+	resize: none;
 }
 
-.infoItext p {
-	font-size: 16px;
-	text-align: justify;
-	margin-bottom: 0;
-	font-size: 1.2em;
+form button {
+	display: block;
+	background-color: green;
+	padding: 10px 45px 10px 45px;
+	border: 0;
+	font-size: 1em;
+	color: white;
+	font-family: "Roboto", sans-serif;
 }
-
-.imagen {
-	height: 10px;
-	position: relative;
-	bottom: 500px;
-	left: 66%;
-	width: 260px;
-	top: -700px
+textarea {
+	resize: none;
 }

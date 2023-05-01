@@ -7,7 +7,9 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.casos.web.service.AdminSenderMail;
 
@@ -21,20 +23,19 @@ public class AdminSendMailController {
 	/**
 	 * Get envio de Correo a GMAIL
 	 */
-	@GetMapping("/sendMailPrueba")
-	public String sendMail(Model model) throws MessagingException {
-		String to = "ddaza681@gmail.com	";
-		String subject = "(IMPORTANTE) - Correo de Prueba desde Aplicacion JAVA";
-		String cont = "Prueba desde casos EMP";
-		boolean isSent = adminServiceSenderMail.sendMail(to,subject, cont);
-		
-		if(isSent){
-			model.addAttribute("message","Correo enviado correctamente.");
-		}else {
-			model.addAttribute("message","No se pudo enviar el correo.");
+	@GetMapping("/sendMail")
+	public ModelAndView sendMail(@RequestParam("para") String para, @RequestParam("subject") String subject,
+			@RequestParam("cont") String cont, Model model) throws MessagingException {
+		ModelAndView modelAndView = new ModelAndView("redirect:/HomeCasoAdmin");
+		boolean isSent = adminServiceSenderMail.sendMail(para, subject, cont);
+
+		if (isSent) {
+			model.addAttribute("message", "Correo enviado correctamente.");
+		} else {
+			model.addAttribute("message", "No se pudo enviar el correo.");
 		}
-		
-		return "";
+
+		return modelAndView;
 	}
 
 }
