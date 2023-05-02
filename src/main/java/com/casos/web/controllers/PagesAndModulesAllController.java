@@ -131,7 +131,7 @@ public class PagesAndModulesAllController {
 		}
 		casos.setDescripcion(casosReq.getDescripcion());
 		casos.setTelefono(casosReq.getTelefono());
-		logger.info("Se Modifico el Caso con Exito!");
+		logger.info("Se Modifico el Caso con Exito.");
 		casosService.actualizarCasos(casos);
 		redirectAttributes.addAttribute("id_caso", casos.getId_caso());
 		return "redirect:/HomeCasoUser";
@@ -147,7 +147,7 @@ public class PagesAndModulesAllController {
 		Optional<Casos> casos = casosRepository.findById(id_caso);
 		if(!casos.isPresent()) {
 			logger.error("Caso no encontrado en la BD.");
-			return "redirect:/Error404"; //Crear pagina Not Found 404
+			return "redirect:/Error404";
 		}
 		casosRepository.deleteById(id_caso);
 		return "redirect:/HomeCasoUser";

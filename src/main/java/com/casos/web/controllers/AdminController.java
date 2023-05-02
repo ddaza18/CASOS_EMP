@@ -1,6 +1,7 @@
 package com.casos.web.controllers;
 
 import java.util.List;
+import java.util.Optional;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -10,12 +11,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.casos.web.model.Casos;
 import com.casos.web.repository.CasosRepository;
 import com.casos.web.service.AdminService;
+import com.casos.web.service.CasosService;
 
 @Controller
 public class AdminController {
@@ -27,6 +32,9 @@ public class AdminController {
 	
 	@Autowired
 	private CasosRepository casosRepository;
+	
+	@Autowired
+	private CasosService casosService;
 	
 	/**
 	 * Get login admin
@@ -74,5 +82,49 @@ public class AdminController {
 		return "CorreoEMP";
 	}
 	
+	/**
+	 * 	GET de landing Page Y POST para "solucion de casos" -> Cambia a estado "SOLUCIONADO"
+	 */
+	@GetMapping("/SolucionesCaso/{id_caso}")
+	public String pageSolucionCaso(Model model, @PathVariable("id_caso") Long id_caso) {
+		Optional<Casos> casosOpt = casosRepository.findById(id_caso);
+		if(casosOpt.isPresent()) {
+			LOG.info("Caso encontrado en BD");
+			model.addAttribute("casos", casosOpt.get());
+			return "SolucionCasos";
+		}else {
+			LOG.error("No se encontraron casos relacionados 404 Not Found");
+			return "redirect:/Error404";
+		}
+	}
+	
+	@PostMapping("/ModificarEstadoCaso/{id_caso}")
+	public String solucionCaso(@PathVariable("id_caso") Long id_caso, @ModelAttribute("casos") Casos casosReq, RedirectAttributes redirectAttributes ) {
+		Casos casos = casosService.buscarPorId(id_caso).orElse(null);
+		
+		if(casos == null) {
+			LOG.error("Caso a modificar no se encuentra en la BD.");
+			return "redirect:/Error404";
+		}
+		casos.setEstado_caso(casosReq.getEstado_caso());
+		LOG.info("Se modifico el caso con exito.");
+		casosService.actualizarCasos(casos);
+		redirectAttributes.addAttribute("id_caso", casos.getId_caso());
+		return "redirect:/HomeCasoAdmin";
+	}
+	
+	/**
+	 * Eliminar caso desde ADMIN	
+	 */
+	@GetMapping("/CasosAdmin/{id_caso}")
+	public String eliminarCaso(@PathVariable("id_caso") Long id_caso) {
+		Optional<Casos> casos = casosRepository.findById(id_caso);
+		if(!casos.isPresent()) {
+			LOG.error("Caso no encontrado en la BD.");
+			return "redirect:/Error404";
+		}
+		casosRepository.deleteById(id_caso);
+		return "redirect:/HomeCasoAdmin";
+	}
 	
 }
