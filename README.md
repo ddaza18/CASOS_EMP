@@ -1,5 +1,5 @@
 # CASOS_EMP
-Proyecto De Registro y Modificación de Casos - Login Único "Usuario" - Spring boot, JPA, Thymeleaf
+Proyecto De Registro y Modificación de Casos - Login Único "Usuario" - Spring boot, JPA, Thymeleaf - Sistema de modo "ADMIN" en modulos
 
 - Lenguaje JAVA
 - Proyecto realizado con Spring boot, JPA, Thymeleaf
@@ -14,7 +14,7 @@ Proyecto De Registro y Modificación de Casos - Login Único "Usuario" - Spring 
 
 # PROXIMAS FUNCIONALIDADES:
 - Panel de Comentarios - Usuarios -> EN DESARROLLO
-- Integraciones en diferentes paneles con APIS de Google Maps, Facebook y Twitter -> EN DESARROLLO
+- Integraciones en diferentes paneles con APIS -> EN DESARROLLO
 - Eliminacion directa de Casos -> COMPLETADO✅
 - Inicio de sesion en Modo Admin -> COMPLETADO ✅
 - Deslogueo automatico de usuarios mediane tiempo de espera en linea -> COMPLETADO✅
