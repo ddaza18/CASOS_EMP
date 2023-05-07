@@ -26,7 +26,6 @@ import com.casos.web.service.CasosService;
 public class AdminController {
 	public static final Logger LOG = LoggerFactory.getLogger(AdminController.class);
 	
-	
 	@Autowired
 	private AdminService adminService;
 	
@@ -125,6 +124,14 @@ public class AdminController {
 		}
 		casosRepository.deleteById(id_caso);
 		return "redirect:/HomeCasoAdmin";
+	}
+	/**
+	 * Landing page de Twilio envios de SMS
+	 */
+	@GetMapping("/TwilioSMS")
+	public String pageTwilioSMS() {
+		LOG.info("Se ingreso al apartado de Twilio envios de SMS...");
+		return "Twilio";
 	}
 	
 }

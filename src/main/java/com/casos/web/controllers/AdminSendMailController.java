@@ -11,14 +11,14 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.casos.web.service.AdminSenderMail;
+import com.casos.web.service.AdminSenderMailService;
 
 @RestController
 public class AdminSendMailController {
 	public static final Logger LOG = LoggerFactory.getLogger(AdminSendMailController.class);
 
 	@Autowired
-	private AdminSenderMail adminServiceSenderMail;
+	private AdminSenderMailService adminServiceSenderMail;
 
 	/**
 	 * Get envio de Correo a GMAIL

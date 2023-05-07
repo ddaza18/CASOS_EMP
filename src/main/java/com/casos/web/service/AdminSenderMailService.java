@@ -20,8 +20,8 @@ import com.casos.web.model.Correo;
 import com.casos.web.repository.AdminCorreoRepository;
 
 @Service
-public class AdminSenderMail {
-	public static final Logger LOG = LoggerFactory.getLogger(AdminSenderMail.class);
+public class AdminSenderMailService {
+	public static final Logger LOG = LoggerFactory.getLogger(AdminSenderMailService.class);
 
 	@Autowired
 	private AdminCorreoRepository adminCorreoRepository;

@@ -3,7 +3,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <head>
 <meta charset="utf-8">
-<title>Correo</title>
+<title>Facebook ADM</title>
 <link href="/css/StyleCorreo.css" rel="stylesheet">
 <html lang="es" xmlns:th="http://www.thymeleaf.org">
 </head>
@@ -12,7 +12,7 @@
 <body>
 	<div class="area"></div>
 	<nav class="main-menu">
-		<ul>
+			<ul>
 			<li>
 				<h6 style="color: white; position: relative; left: 25px;">PANEL
 					DE ACCIONES ADMIN (EMP)</h6>
@@ -34,6 +34,7 @@
 					class="nav-text"> CASOS EMP envios de SMS </span>
 			</a></li>
 		</ul>
+		
 		<ul class="logout">
 			<li><a th:href="@{/loginAdmin/login}"> <i
 					class="fa fa-power-off fa-2x"></i> <span class="nav-text">
@@ -41,22 +42,10 @@
 			</a></li>
 		</ul>
 	</nav>
-	<h2
-		style="background-color: #878787; text-align: center; color: #000; position: relative; left: 25px; bottom: 20px; width: 99%;">GESTION
-		DE CASOS CON ENVIO DE CORREO</h2>
-
-	<!-- FORMULARIO ENVIO DE CORREO -->
-	<div class="enviodeCorreo">
-		<form th:action="@{/sendMail}">
-			<h1>CORREO CASOS EMP</h1>
-			<input name="para" id="para" class="para" type="email"
-				placeholder="Para ej: ejemplo@ejemplo.com" required value="" /> <input
-				name="subject" id="subject" class="subject" type="text"
-				placeholder="Asunto Caso EMP" required value="" />
-			<textarea name="cont" id="cont" class="cont"
-				placeholder="Contenido Caso EMP" rows="6" required></textarea>
-			<button id="enviar" name="enviar" type="submit" class="btn">ENVIAR</button>
-		</form>
-	</div>
+	<h2 style="background-color: #878787; text-align: center; color: #000; position: relative; left: 25px; bottom: 20px; width: 99%;">GESTION DE CASOS CON ENVIO DE SMS</h2>
+	
+	<!-- TABLA DE PUBLICACIONES -->
+	
+	
 </body>
 </html>
