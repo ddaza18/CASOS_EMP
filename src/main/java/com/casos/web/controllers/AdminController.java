@@ -113,7 +113,7 @@ public class AdminController {
 	}
 	
 	/**
-	 * Eliminar caso desde ADMIN	
+	 * Eliminar caso desde ADMIN
 	 */
 	@GetMapping("/CasosAdmin/{id_caso}")
 	public String eliminarCaso(@PathVariable("id_caso") Long id_caso) {
@@ -125,13 +125,4 @@ public class AdminController {
 		casosRepository.deleteById(id_caso);
 		return "redirect:/HomeCasoAdmin";
 	}
-	/**
-	 * Landing page de Twilio envios de SMS
-	 */
-	@GetMapping("/TwilioSMS")
-	public String pageTwilioSMS() {
-		LOG.info("Se ingreso al apartado de Twilio envios de SMS...");
-		return "Twilio";
-	}
-	
 }
