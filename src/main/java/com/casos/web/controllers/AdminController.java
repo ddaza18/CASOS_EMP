@@ -125,4 +125,10 @@ public class AdminController {
 		casosRepository.deleteById(id_caso);
 		return "redirect:/HomeCasoAdmin";
 	}
+	
+	@GetMapping("/CentroDeNotificaciones")
+	public String pageCentroNotificaciones(Model model) {
+		LOG.info("Se ingreso al Centro de Notificaciones ADMIN");
+		return "CentroDeNotificaciones";
+	}
 }

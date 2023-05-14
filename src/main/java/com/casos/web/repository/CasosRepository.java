@@ -21,14 +21,14 @@ public interface CasosRepository extends JpaRepository<Casos, Long> {
 	
 	List<Casos> findByUsuarioEmail(String email);
 	
-	@Transactional
+    List<Casos> findByDescripcionContainingIgnoreCase(String filtro);
+        
+   @Transactional
+   public void deleteById(Long id_caso);
+   
+   @Transactional
 	default void update(Casos casos) {
 		save(casos);
 	}
-	
-    List<Casos> findByDescripcionContainingIgnoreCase(String filtro);
-    
-   @Transactional
-   public void deleteById(Long id_caso); 
 
 }

@@ -21,9 +21,19 @@ public class NotificacionJob {
 	 */
 	@Scheduled(fixedDelay = 600000)
 	public void sendNotificacion() {
-		LOG.info("Inciando Ejecucion JOB -> Notificacion Programada...");
+		LOG.info("Inciando Ejecucion JOB -> Notificacion Desarrollo -> Casos EMP...");
 		String msj = "Este mensaje programado se envia cada 10 minutos 'sendNotificacion()'";
 		messagingTemplate.convertAndSend("/topic/notification", msj);
+	}
+	/**
+	 * Este Job se ejecuta cada 5 minutos, osea cada (300.000 ms)
+	 */
+	
+	@Scheduled(fixedDelay = 300000)
+	public void sendNotificacionInactivacionUsuarios() {
+		LOG.info("Iniciando Ejecucion JOB -> Notificacion Deslogeo de Usuarios");
+		String msj = "Este mensaje programado se envia cada 10 minutos ";
+		messagingTemplate.convertAndSend("/topic/notificacion", msj);
 	}
 
 }

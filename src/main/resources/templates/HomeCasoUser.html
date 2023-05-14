@@ -44,14 +44,9 @@
 		BIENVENIDO USUARIO
 		<br> <span sec:authentication="principal.username"></span>
 	</h4>
-	<!-- FILTRO DE CASOS POR DESCRIPCIÓN -->
-	<form th:action="@{/filtrar}" method="GET" style="position: relative; left: 80%; width: 13%">
-   		<input type="text" name="filtro" placeholder="Filtro por Descripción...">
-    <button style="background-color: #A0AFF6; border-radius: 5px;" type="submit">Filtrar</button>
-	</form>
 	<br>
 	<!-- TABLA DE CASOS -->
-	<table class="table">
+	<table class="table" id="Tablacasos">
 		<thead>
 			<tr style="background-color: #bdb8b8;">
 				<th scope="col"><strong><center>DESCRIPCIÓN</center></strong></th>
@@ -74,6 +69,7 @@
 						<a th:href="@{/Casos/{id_caso}(id_caso=${caso.id_caso})}"><button style="background-color: #A0AFF6; border-radius: 5px; text-align: center; border-style: 1px; position: relative; right: 10px" type="button" class="btn btn-primary">ELIMINAR CASO</button></a>
 			</tr>
 		</tbody>
+		</table>
 </body>
 </html>
 

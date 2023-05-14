@@ -46,7 +46,7 @@ public class NotificacionService {
 	 */
 
 	public void sendNotificacion(Notificacion notificacion) {
-		LOG.info("Enviando notificacion: " + notificacion.getTexto());
+		LOG.info("Notificacion: " + notificacion.getTexto());
 	}
 	
 	public void stopNotificaciones() {

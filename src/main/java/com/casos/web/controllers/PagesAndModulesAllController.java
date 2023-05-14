@@ -2,6 +2,7 @@ package com.casos.web.controllers;
 
 import java.time.LocalDateTime;
 import java.time.ZoneId;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
@@ -12,6 +13,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -42,23 +44,22 @@ public class PagesAndModulesAllController {
 
 	@Autowired
 	private CasosRepository casosRepository;
-	
+
 	@Autowired
 	private UsuarioRepository usuarioRepositorio;
-	
+
 	@Autowired
 	private CasosService casosService;
-	
+
 	@Autowired
 	private ReportsService reportesCasos;
-	
-	
+
 	@GetMapping("/Error404")
 	public String paginaNoEncontrada() {
 		logger.error("Error 404 Pagina No Encontrada");
 		return "NotFound";
 	}
-	
+
 	@GetMapping("/loginUsuarios")
 	public String peticionIndex() {
 		logger.info("Se entro al login");
@@ -70,17 +71,17 @@ public class PagesAndModulesAllController {
 		logger.info("Se entro al home de CrearCasoUser");
 		Usuario usuario = usuarioRepositorio.findByEmail(authentication.getName());
 		List<Casos> casos = casosRepository.findByUsuarioEmail(usuario.getEmail());
-		 model.addAttribute("casos", casos);
+		model.addAttribute("casos", casos);
 		return "HomeCasoUser";
 	}
-	
+
 	@GetMapping("/CrearCasos")
 	public String crearCasos(Model model) {
 		model.addAttribute("casos", new Casos());
 		logger.info("Se ingreso al apartado de CrearCasos");
 		return "CrearCasos";
 	}
-	
+
 	@PostMapping("/CrearCasos")
 	public String casosCreadosPost(@ModelAttribute("casos") Casos casos, Model model, Authentication authentication) {
 		LocalDateTime localDateTime = LocalDateTime.now();
@@ -94,33 +95,34 @@ public class PagesAndModulesAllController {
 		logger.info("El caso se registro en la BD con exito!");
 		return "redirect:/HomeCasoUser";
 	}
-	
-	/*
+
+	/**
 	 * Get del ModificarCasos HTML
 	 */
-	
+
 	@GetMapping("/ModificarCasos/{id_caso}")
 	public String actualizarCasos(Model model, @PathVariable("id_caso") Long id_caso) {
-	    Optional<Casos> casosOpt = casosRepository.findById(id_caso);
-	    if(casosOpt.isPresent()) {
-	        logger.error("Caso Encontrado en BD.");
-	        model.addAttribute("casos", casosOpt.get());
-	        return "EditarCaso";
-	    } else {
-	    	logger.error("No se encontraron casos Relacionados 404 Not Found");
-	        return "redirect:/Error404";
-	    }
+		Optional<Casos> casosOpt = casosRepository.findById(id_caso);
+		if (casosOpt.isPresent()) {
+			logger.error("Caso Encontrado en BD.");
+			model.addAttribute("casos", casosOpt.get());
+			return "EditarCaso";
+		} else {
+			logger.error("No se encontraron casos Relacionados 404 Not Found");
+			return "redirect:/Error404";
+		}
 	}
-	
-	/*
+
+	/**
 	 * Guarda el caso Actualizado POST
 	 */
-	
+
 	@PostMapping("/ActualizarCasos/{id_caso}")
-	public String guardarModificacionesCasos(@PathVariable("id_caso") Long id_caso, @ModelAttribute("casos") Casos casosReq, RedirectAttributes redirectAttributes) {
+	public String guardarModificacionesCasos(@PathVariable("id_caso") Long id_caso,
+			@ModelAttribute("casos") Casos casosReq, RedirectAttributes redirectAttributes) {
 		Casos casos = casosService.buscarPorId(id_caso).orElse(null);
-		
-		if(casos == null) {
+
+		if (casos == null) {
 			logger.error("El caso a modificar no existe en la BD.");
 			return "redirect:/Error404";
 		}
@@ -132,80 +134,79 @@ public class PagesAndModulesAllController {
 		return "redirect:/HomeCasoUser";
 
 	}
-	
-	/*
+
+	/**
 	 * Metodo de eliminar Casos
 	 */
-	
+
 	@GetMapping("/Casos/{id_caso}")
-	public String eliminarCasos(@PathVariable Long id_caso){
+	public String eliminarCasos(@PathVariable Long id_caso) {
 		Optional<Casos> casos = casosRepository.findById(id_caso);
-		if(!casos.isPresent()) {
+		if (!casos.isPresent()) {
 			logger.error("Caso no encontrado en la BD.");
 			return "redirect:/Error404";
 		}
 		casosRepository.deleteById(id_caso);
 		return "redirect:/HomeCasoUser";
-		
+
 	}
-	
-	/*
+
+	/**
 	 * Filtro de Casos
 	 */
-	@GetMapping("/filtrar")
-	public String filtrarCasos(@RequestParam("filtro") String filtro, Model model){
-		List<Casos> casos = casosRepository.findByDescripcionContainingIgnoreCase(filtro);
-		model.addAttribute("casos",casos);
-		logger.info("Se Encuentran Filtrando Casos");
-		return "HomeCasoUser";
+	@GetMapping("/filtrarAdmin")
+	public String filtrarCasosAdmin(@RequestParam("filtro") String filtro, Model model) {
+		List<Casos> casosList = casosRepository.findByDescripcionContainingIgnoreCase(filtro);
+		model.addAttribute("casos", casosList);
+		return "HomeCasoAdmin";
 	}
-	
+
 	/**
 	 * Get pagina de reporte de casos
 	 */
 	@GetMapping("/Reportes")
 	public String reportesCasos() {
 		logger.info("Se entro a Reporte de casos");
-		return "ReporteCasos"; 
+		return "ReporteCasos";
 	}
-	
+
 	@GetMapping("/reporte-casos")
 	public void generarReporteCasos(HttpServletResponse response) {
 		Font fontNegrilla = new Font(Font.FontFamily.TIMES_ROMAN, 12, Font.BOLD);
 		Font fontNormal = new Font(Font.FontFamily.TIMES_ROMAN, 12);
-	        try {
-	            List<ReportesCasos> repcasos = reportesCasos.obtenerReportesCasos();
+		try {
+			List<ReportesCasos> repcasos = reportesCasos.obtenerReportesCasos();
 
-	            response.setContentType("application/pdf");
-	            response.setHeader("Content-Disposition", "attachment; filename=\"ReporteCasosEmp.pdf\"");
-	            Document document = new Document();
-	            
-	            PdfWriter.getInstance(document, response.getOutputStream());
-	            document.open();
-	            PdfPTable table = new PdfPTable(7);
-	            table.addCell(new Phrase("ID CASO" , fontNegrilla));
-	            table.addCell(new Phrase("FECHA CREACION", fontNegrilla));
-	            table.addCell(new Phrase("DESCRIPCION", fontNegrilla));
-	            table.addCell(new Phrase("TELEFONO", fontNegrilla));
-	            table.addCell(new Phrase("AGENTE EMP", fontNegrilla));
-	            table.addCell(new Phrase("CORREO AGENTE EMP", fontNegrilla));
-	            table.addCell(new Phrase("ESTADO", fontNegrilla));
+			response.setContentType("application/pdf");
+			response.setHeader("Content-Disposition", "attachment; filename=\"ReporteCasosEmp.pdf\"");
+			Document document = new Document();
 
-	            for(ReportesCasos reportesCasos : repcasos) {
-	                table.addCell(new Phrase (reportesCasos.getId().toString(),fontNormal));
-	                table.addCell(new Phrase(reportesCasos.getFechaCreacion().toString(),fontNormal));
-	                table.addCell(new Phrase(reportesCasos.getDescripcion().toString(),fontNormal));
-	                table.addCell(new Phrase(reportesCasos.getTelefonoCaso().toString(),fontNormal));
-	                table.addCell(new Phrase(reportesCasos.getUsuarioCrea().toString(),fontNormal));
-	                table.addCell(new Phrase(reportesCasos.getCorreoUsuarioCrea().toString(),fontNormal));
-	                table.addCell(new Phrase(reportesCasos.getEstado().toString(),fontNormal));
-	            }
-	            document.add(table);
-	            document.close();
+			PdfWriter.getInstance(document, response.getOutputStream());
+			document.open();
+			PdfPTable table = new PdfPTable(7);
+			table.addCell(new Phrase("ID CASO", fontNegrilla));
+			table.addCell(new Phrase("FECHA CREACION", fontNegrilla));
+			table.addCell(new Phrase("DESCRIPCION", fontNegrilla));
+			table.addCell(new Phrase("TELEFONO", fontNegrilla));
+			table.addCell(new Phrase("AGENTE EMP", fontNegrilla));
+			table.addCell(new Phrase("CORREO AGENTE EMP", fontNegrilla));
+			table.addCell(new Phrase("ESTADO", fontNegrilla));
 
-	        } catch (Exception e) {
-	            logger.error("No se pudo generar el reporte de casos 'generarReporteCasos'");
-	            e.getMessage();
-	        }
+			for (ReportesCasos reportesCasos : repcasos) {
+				table.addCell(new Phrase(reportesCasos.getId().toString(), fontNormal));
+				table.addCell(new Phrase(reportesCasos.getFechaCreacion().toString(), fontNormal));
+				table.addCell(new Phrase(reportesCasos.getDescripcion().toString(), fontNormal));
+				table.addCell(new Phrase(reportesCasos.getTelefonoCaso().toString(), fontNormal));
+				table.addCell(new Phrase(reportesCasos.getUsuarioCrea().toString(), fontNormal));
+				table.addCell(new Phrase(reportesCasos.getCorreoUsuarioCrea().toString(), fontNormal));
+				table.addCell(new Phrase(reportesCasos.getEstado().toString(), fontNormal));
+			}
+			document.add(table);
+			document.close();
+
+		} catch (Exception e) {
+			logger.error("No se pudo generar el reporte de casos 'generarReporteCasos'");
+			e.getMessage();
+		}
 	}
 }

@@ -11,5 +11,6 @@ public interface AdminNotificacionRepository extends JpaRepository<Notificacion,
 	/**
 	 * Logica de Notificacion
 	 */
+	Notificacion save(Notificacion notificacion);
 	
 }
