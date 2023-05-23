@@ -26,4 +26,4 @@ Proyecto De Registro y Modificación de Casos - Login Único "Usuario" - Spring 
 
 # FUTURAS INTEGRACIONES
 - Entorno Docker
-- Telegram -> EN DESARROLLO
+- Telegram -> COMPLETADO✅
