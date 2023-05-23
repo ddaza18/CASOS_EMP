@@ -19,7 +19,7 @@ public static final Logger LOG = LoggerFactory.getLogger(TelegramBotAPI.class);
 		LOG.info("Escribieron en el BOT: " + mensaje);
 		
 		//Obtiene el id del usuario y lo parsea
-		final String chatId = String.valueOf(update.getMessage().getChatId());
+		final String chatId = update.getMessage().getChatId().toString();
 		
 		//Crea un objeto del mensaje
 		SendMessage message = new SendMessage();
