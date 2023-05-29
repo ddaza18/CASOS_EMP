@@ -7,7 +7,4 @@ import com.casos.web.model.MensajesTelegram;
 
 @Repository
 public interface AdminTelegramRepository extends JpaRepository<MensajesTelegram, Long>{
-	
-	MensajesTelegram save(MensajesTelegram mensajes);
-
 }
