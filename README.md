@@ -1,29 +1,24 @@
 # CASOS_EMP
-Proyecto De Registro y Modificación de Casos - Login Único "Usuario" - Spring boot, JPA, Thymeleaf - Sistema de modo "ADMIN" en modulos
+Case Registration and Modification Project - Single "User" Login - Spring Boot, JPA, Thymeleaf - "ADMIN" mode system in modules
 
-- Lenguaje JAVA
-- Proyecto realizado con Spring boot, JPA, Thymeleaf
-- Patron arquitectonico MVC
-- Estado de proyecto -> EN PROCESO
-- Seguridad integrada con Spring Secuity - Encriptacion de Contraseña en BD✅
-- Filtro de busqueda mediante la "Descripcion" de caso✅
-- Creacion y modificacion del Caso✅
-- Seguridad mediate URL (Spring boot Security)✅
-- Borrado de Cache al Cerrar Sesion✅
-
-
-# PROXIMAS FUNCIONALIDADES:
-- Panel de Comentarios - Usuarios -> EN DESARROLLO
-- Integraciones en diferentes paneles con APIS -> EN DESARROLLO
-- Eliminacion directa de Casos -> COMPLETADO✅
-- Inicio de sesion en Modo Admin -> COMPLETADO ✅
-- Deslogueo automatico de usuarios mediane tiempo de espera en linea -> COMPLETADO✅
-- Modulos en modo ADMIN -> EN DESARROLLO
-- Notificaciones Programadas -> COMPLETADO✅
-- Envio de Correos modo ADMIN -> COMPLETADO✅
-- Mejoras en documentos de reportes -> COMPLETADO✅
-- Mejoras en Notificaciones -> COMPLETADO✅
-
-# FUTURAS INTEGRACIONES
-- Entorno Docker
-- Telegram -> COMPLETADO✅
+- JAVA language
+- Project developed with Spring Boot, JPA, Thymeleaf
+- MVC architectural pattern
+- Project status ->
+- tegrated security with Spring Security - Password encryption in the database✅
+- arch filter by case "Description"✅
+- se creation and modification✅
+- L-based security (Spring Boot Security)✅
+- earing cache on logout✅
+# COMING FUNCTIONALITIES:
+- tegrations with different panels using APIs -> COMPLETED✅
+- rect case deletion -> COMPLETED✅
+- Admin mode login -> COMPLETED✅
+- Automatic user logout based on idle time -> COMPLETED✅
+- Admin mode modules -> COMPLETED✅
+- Scheduled notifications -> COMPLETED✅
+- Admin mode email sending -> COMPLETED✅
+- Improvements in report documents -> COMPLETED✅
+- Improvements in notifications -> COMPLETED✅
+# FUTURE INTEGRATIONS
+- Telegram -> COMPLETED✅
