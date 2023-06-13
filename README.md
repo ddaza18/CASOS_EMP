@@ -4,7 +4,7 @@ Proyecto De Registro y Modificación de Casos - Login Único "Usuario" - Spring 
 - Lenguaje JAVA
 - Proyecto realizado con Spring boot, JPA, Thymeleaf
 - Patron arquitectonico MVC
-- Estado de proyecto -> EN PROCESO
+- Estado de proyecto -> 
 - Seguridad integrada con Spring Secuity - Encriptacion de Contraseña en BD✅
 - Filtro de busqueda mediante la "Descripcion" de caso✅
 - Creacion y modificacion del Caso✅
@@ -13,17 +13,15 @@ Proyecto De Registro y Modificación de Casos - Login Único "Usuario" - Spring 
 
 
 # PROXIMAS FUNCIONALIDADES:
-- Panel de Comentarios - Usuarios -> EN DESARROLLO
-- Integraciones en diferentes paneles con APIS -> EN DESARROLLO
+- Integraciones en diferentes paneles con APIS -> COMPLETADO✅
 - Eliminacion directa de Casos -> COMPLETADO✅
 - Inicio de sesion en Modo Admin -> COMPLETADO ✅
 - Deslogueo automatico de usuarios mediane tiempo de espera en linea -> COMPLETADO✅
-- Modulos en modo ADMIN -> EN DESARROLLO
+- Modulos en modo ADMIN -> COMPLETADO✅
 - Notificaciones Programadas -> COMPLETADO✅
 - Envio de Correos modo ADMIN -> COMPLETADO✅
 - Mejoras en documentos de reportes -> COMPLETADO✅
 - Mejoras en Notificaciones -> COMPLETADO✅
 
 # FUTURAS INTEGRACIONES
-- Entorno Docker
 - Telegram -> COMPLETADO✅
